@@ -1,0 +1,10 @@
+<% @cards.each do |card| %>
+  <div id="card_<%= card.id %>">
+    <hr>
+    <p><%= card.id %></p>
+    <p><%= card.name %></p>
+    <p><%= card.description %></p>
+    <p><%= card.votes %></p>
+    <hr>
+  </div>
+<% end%>

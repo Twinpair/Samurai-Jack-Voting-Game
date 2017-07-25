@@ -1,0 +1,10 @@
+<%= form_for @card do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+  <br />
+  <%= f.label :description %>:
+  <%= f.text_field :description %><br />
+  <br />
+  <%= f.submit button_name %>
+<% end %>
+<%= button_to "Delete Event", @card, method: :delete, data: { confirm: "You sure?" }  if !delete_button.nil?%>

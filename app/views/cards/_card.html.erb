@@ -1,0 +1,11 @@
+<%= form_for(card, method: :put, html: {id:"card_submit_#{card.id}"}) do |f| %>
+  <div  id="card_<%= card.id %>" onclick = "document.forms['card_submit_<%= card.id %>'].submit();">
+    <hr>
+    <p><%= card.id %></p>
+    <p><%= card.name %></p>
+    <p><%= card.description %></p>
+    <p><%= card.votes %></p>
+    <hr>
+  </div>
+  <%= f.submit 'VOTE' %>
+<% end %>
