@@ -1,5 +1,7 @@
 class Card < ApplicationRecord
 
+  mount_uploader :picture, PictureUploader
+
   # Will keep track of what cards were already voted on
   @used_cards = []
 
