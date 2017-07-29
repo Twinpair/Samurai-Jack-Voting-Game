@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/new',  to: 'cards#new'
   get '/:id/edit',  to: 'cards#edit'
-  get '/leaderboards', to: 'cards#leaderboards'
+  get '/results', to: 'cards#results'
 
   resources :cards
 

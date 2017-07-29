@@ -1,0 +1,15 @@
+$('#card_container').animate({left: '1100px'}, function(){
+	$("#total_votes").text("Total Votes: <%= @total_votes %>");
+	$('.card_form').remove();
+	$("#card_container").attr("style", "left='-600px;'");
+	$("#card_container").prepend("<%= j render @cards %>");
+	$("#card_container").animate({left: '0px'});
+	var tiltSettings = [];
+    function init() {
+      var idx = 0;  [].slice.call(document.querySelectorAll('a.tilter')).forEach(function(el, pos) { 
+        idx = pos%2 === 0 ? idx+1 : idx;
+        new TiltFx(el, tiltSettings[idx-1]);
+      });
+    }
+    init();
+});

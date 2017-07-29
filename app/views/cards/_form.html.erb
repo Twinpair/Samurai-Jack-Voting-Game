@@ -1,11 +1,44 @@
-<%= form_for @card do |f| %>
-  <%= f.label :name %>:
-  <%= f.text_field :name %><br />
-  <br />
-  <%= f.label :description %>:
-  <%= f.text_field :description %><br />
-  <span class="picture"><%= f.file_field :picture %></span><br />
-  <br />
-  <%= f.submit button_name %>
-<% end %>
-<%= button_to "Delete Event", @card, method: :delete, data: { confirm: "You sure?" }  if !delete_button.nil?%>
+    <%= form_for @card do |f| %>
+      <div class="row form-row">
+        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control form-input" %>
+          <p class="help-block"></p>
+        </div> 
+      </div> 
+
+      <div class="row form-row">
+        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+          <%= f.label :description %>
+          <%= f.text_field :description, class: "form-control form-input" %>
+          <p class="help-block"></p>
+        </div> 
+      </div>
+
+      <div class="row form-row">
+        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+        <% if @card.picture.url %>
+          <label>Current Image:</label>
+          <%= image_tag @card.picture.url, class: "img-responsive form-image", alt: @card.picture %>
+           <%= f.label :picture, "Upload a different image" %>
+        <% else %>
+          <%= f.label :picture, "Upload an image" %>
+        <% end %>
+          <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: "btn btn-primary", style: "margin-left: auto; margin-right: auto;" %>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="button-div">
+          <%= f.submit button_name, class: "btn btn-primary form-button" %>
+        </div>
+      </div>
+    <% end %>
+
+  <% if !delete_button.nil?%>
+    <div class="row form-row">
+      <div class="button-div">
+        <%= button_to "Delete Event", @card, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger form-button" %>
+      </div>
+    </div>
+  <% end %>

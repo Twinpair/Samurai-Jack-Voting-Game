@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SamuraiJackVotingGame</title>
+    <title>Samurai Jack Voting Game</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Abril+Fatface" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
   <body>
+    <nav class="navbar navbar-default <%= 'navbar-fixed-top' if @fixed_nav %>">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to 'Samuria Jack Game', root_path, class: "navbar-brand" %>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Game', root_path %></li>
+            <li><%= link_to 'Results', results_path %></li>
+            <li><a href="https://github.com/Twinpair/Samurai-Jack-Voting-Game" target="blank">Source Code</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
+    
   </body>
+
+  <%= javascript_include_tag 'application' %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<% if @tilter_feature %>   
+  <script>
+    (function() {
+      var tiltSettings = [];
+      function init() {
+        var idx = 0;  [].slice.call(document.querySelectorAll('a.tilter')).forEach(function(el, pos) { 
+          idx = pos%2 === 0 ? idx+1 : idx;
+          new TiltFx(el, tiltSettings[idx-1]);
+        });
+      }
+
+      // Preload all images.
+      imagesLoaded(document.querySelector('main'), function() {
+        init();
+      });
+    })();
+  </script>
+<% end %>
 </html>

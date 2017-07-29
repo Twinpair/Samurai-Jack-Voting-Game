@@ -22,3 +22,6 @@
 
 # Ignore uploaded test images.
 /public/uploads
+
+# Ignore DS_store
+.DS_Store

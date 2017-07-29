@@ -1,15 +1,16 @@
 class CardsController < ApplicationController
   
   def index
-    if Card.all.count <= 1
-      @not_enough_cards = true
-    else
-      @cards = Card.retrieve_cards
-    end
+    @cards = Card.retrieve_cards
+    @total_votes = Card.total_votes
+    @tilter_feature = true
+    @fixed_nav = false
   end
 
-  def leaderboards
-    @cards = Card.get_leaderboard
+  def results
+    @cards = Card.get_results
+    @tilter_feature = false
+    @fixed_nav = true
   end
 
   def new
@@ -30,14 +31,16 @@ class CardsController < ApplicationController
   end
 
   def update
-    @card = Card.find(params[:id])
+    @card = Card.find(params[:id]) 
     respond_to do |format|
       if !params[:card].nil?
         @card.update(name: params[:card][:name], description:params[:card][:description], picture: params[:card][:picture])
         format.html { redirect_to root_path }
-        format.js
       else
         @card.update_vote_count
+        @card.save
+        @cards = Card.retrieve_cards
+        @total_votes = Card.total_votes
         format.html { redirect_to root_path }
         format.js
       end

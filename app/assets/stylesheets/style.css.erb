@@ -1,0 +1,134 @@
+*, *::after, *::before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* Navbar */
+.navbar {
+  background-color: #0B0B0B !important; 
+  border-color: transparent; 
+  border-radius: 0%;
+  box-shadow: 0 0 6px 3px rgba(0,0,0,.35); 
+}
+.navbar-default .navbar-nav>li>a { 
+  font-family: 'Abril Fatface', 
+  serif; padding-top: 25px; 
+  padding-bottom: 25px; 
+  min-height: 69px; 
+  color: white; 
+  font-size: 20px;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #DDBE42;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+  color: #DDBE42;
+}
+.navbar-default .navbar-nav .open .dropdown-menu {
+  background-color: #060606 !important;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.4);
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a{
+  color: #585858 !important;
+  padding: 12px 12px 12px 12px !important;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: #DDBE42 !important;
+  background-color: transparent !important;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #DDBE42 !important;
+    background-color: transparent !important;
+  }
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  border-color: transparent;
+  background-color: transparent;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: transparent;
+}
+.navbar-form { padding-top: 10px !important;}
+.navbar-default .navbar-brand {
+  font-family: 'Abril Fatface', serif;
+  font-size: 21px;
+  color: #CBAF3B;
+  margin-top: 10px;
+}
+.navbar-default .navbar-brand:hover{
+  color: white;
+}
+
+/* Body */
+body {
+  font-family: 'Roboto','Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+  background-image: url(<%= asset_path('background.png')%> );
+  background-repeat: no-repeat;
+  background-position: center 0%;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Forms */
+label{
+  display: block;
+  text-align: center;
+  line-height: 150%;
+  font-size: 1.5em;
+  color: white;
+  font-family: 'Abril Fatface'
+}
+.form-row{
+  margin: 0;
+}
+.form-input{
+  font-size: 20px;
+  height: 40px;
+}
+.form-button{
+  width: 300px;
+  height: 50px;
+}
+.button-div{
+  margin-top: 40px;
+  text-align: center;
+}
+.btn-danger{
+  margin-bottom: 20px;
+}
+.form-image{
+  height: 200px;
+  margin: auto;
+}
+
+/* Content */
+.content {
+  min-height: 85vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+#card_container{
+  left: -600px;
+}
+.title{
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 30px;
+  font-family: 'Abril Fatface', serif;
+}
+#results{
+  margin-top: 70px;
+}
