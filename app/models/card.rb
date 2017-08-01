@@ -1,23 +1,25 @@
 class Card < ApplicationRecord
 
+  belongs_to :category
+
   mount_uploader :picture, PictureUploader
 
   # Will keep track of what cards were already voted on
   @used_cards = []
 
-  # Returns the two cards that will be voted on
-  def self.retrieve_cards
+  # Returns the two cards that will be voted on (depending on category)
+  def self.retrieve_cards(category)
     cards_to_return = []
-    unused_cards = Card.where.not(id: @used_cards).shuffle
+    unused_cards = Card.where(category: Category.find_by(name: category)).where.not(id: @used_cards).shuffle
     cards_to_return.push(unused_cards.first, unused_cards.second)
     @used_cards.push(unused_cards.shift, unused_cards.shift)
     self.reset_used_cards if unused_cards.length <= 1
     return cards_to_return
   end
 
-  # Adds and returns all votes that have been made on the site
-  def self.total_votes
-    return Card.sum(:votes)
+  # Adds and returns all votes that have been made on the site (depending on category)
+  def self.total_votes(category)
+    return Card.where(category: Category.find_by(name: category)).sum(:votes)
   end
 
   # Clears the used_cards array, so the game can use all cards again
@@ -31,8 +33,8 @@ class Card < ApplicationRecord
   end
 
   # Orders the items by the 'votes' attribute for result purposes
-  def self.get_results
-    return Card.order(votes: :desc)
+  def self.get_results(category="all")
+    return category == "all" ? Card.order(votes: :desc) : Card.where(category: Category.find_by(name:category)).order(votes: :desc)
   end
 
 end

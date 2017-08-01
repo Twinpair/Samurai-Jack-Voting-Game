@@ -1,10 +1,27 @@
 class CardsController < ApplicationController
   
-  def index
-    @cards = Card.retrieve_cards
-    @total_votes = Card.total_votes
+  def enemies
+    @cards = Card.retrieve_cards("Enemy")
+    @total_votes = Card.total_votes("Enemy")
     @tilter_feature = true
     @fixed_nav = false
+    @background = "enemies-background.png"
+  end
+
+  def outfits
+    @cards = Card.retrieve_cards("Outfit")
+    @total_votes = Card.total_votes("Outfit")
+    @tilter_feature = true
+    @fixed_nav = false
+    @background = "outfits-background.png"
+  end
+
+  def allies
+    @cards = Card.retrieve_cards("Ally")
+    @total_votes = Card.total_votes("Ally")
+    @tilter_feature = true
+    @fixed_nav = false
+    @background = "allies-background.png"
   end
 
   def results
@@ -13,12 +30,33 @@ class CardsController < ApplicationController
     @fixed_nav = true
   end
 
+  def results_enemies
+    @cards = Card.get_results("Enemy")
+    @tilter_feature = false
+    @fixed_nav = true
+    @background = "enemies-background.png"
+  end
+
+  def results_outfits
+    @cards = Card.get_results("Outfit")
+    @tilter_feature = false
+    @fixed_nav = true
+    @background = "outfits-background.png"
+  end
+
+  def results_allies
+    @cards = Card.get_results("Ally")
+    @tilter_feature = false
+    @fixed_nav = true
+    @background = "allies-background.png"
+  end
+
   def new
     @card = Card.new
   end
 
   def create
-    @card = Card.new(name: params[:card][:name], description: params[:card][:description], picture: params[:card][:picture])
+    @card = Card.new(name: params[:card][:name], description: params[:card][:description], category: Category.find(params[:card][:category]), picture: params[:card][:picture])
     if @card.save
       redirect_to root_path
     else
@@ -34,13 +72,13 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id]) 
     respond_to do |format|
       if !params[:card].nil?
-        @card.update(name: params[:card][:name], description:params[:card][:description], picture: params[:card][:picture])
+        @card.update(name: params[:card][:name], description:params[:card][:description], category: Category.find(params[:card][:category]), picture: params[:card][:picture])
         format.html { redirect_to root_path }
       else
         @card.update_vote_count
         @card.save
-        @cards = Card.retrieve_cards
-        @total_votes = Card.total_votes
+        @cards = Card.retrieve_cards(@card.category.name)
+        @total_votes = Card.total_votes(@card.category.name)
         format.html { redirect_to root_path }
         format.js
       end

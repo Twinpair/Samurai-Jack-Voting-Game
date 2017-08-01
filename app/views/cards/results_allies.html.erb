@@ -2,8 +2,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1 class="title">Results (All)</h1>
-            <p class="text-center resutls-filter">Filter:&nbsp;&nbsp;<%= link_to 'Enemies', results_enemies_path %> | <%= link_to 'Outfits', results_outfits_path %> | <%= link_to 'Allies', results_allies_path %></p>
+            <h1 class="title">Results (Allies)</h1>
+            <p class="text-center resutls-filter">Filter:&nbsp;&nbsp;<%= link_to 'All', results_path %> | <%= link_to 'Enemies', results_enemies_path %> | <%= link_to 'Outfits', results_outfits_path %></p>
           </div>
               
         <% @cards.each do |card| %>
