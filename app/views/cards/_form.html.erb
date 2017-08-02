@@ -16,9 +16,9 @@
       </div>
 
       <div class="row form-row">
-        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+        <div class="col-lg-2 col-lg-offset-5 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12">
           <%= f.label :category %>
-          <%= f.select :category, Category.all.map{|c| [c.name, c.id] }, :prompt => "Select One" %>
+          <%= select_tag :category_id, options_for_select(Category.all.map{|c| [c.name, c.id] }, @card.category_id), prompt: "Select One", class: "form-control" %>
           <p class="help-block"></p>
         </div> 
       </div>

@@ -56,7 +56,8 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(name: params[:card][:name], description: params[:card][:description], category: Category.find(params[:card][:category]), picture: params[:card][:picture])
+    
+    @card = Card.new(name: params[:card][:name], description: params[:card][:description], category: Category.find(params[:category_id]), picture: params[:card][:picture])
     if @card.save
       redirect_to root_path
     else
@@ -72,7 +73,7 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id]) 
     respond_to do |format|
       if !params[:card].nil?
-        @card.update(name: params[:card][:name], description:params[:card][:description], category: Category.find(params[:card][:category]), picture: params[:card][:picture])
+        @card.update(name: params[:card][:name], description:params[:card][:description], category: Category.find(params[:category_id]), picture: params[:card][:picture])
         format.html { redirect_to root_path }
       else
         @card.update_vote_count
