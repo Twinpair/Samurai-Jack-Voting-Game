@@ -1,4 +1,4 @@
-<%= form_for(card, method: :put, html: {id:"card_submit_#{card.id}", class: "card_form"}, remote: true ) do |f| %>
+<%= form_for(card, method: :put, html: {id:"card_submit_#{card.id}", class: "card_form remove_form"}, remote: true ) do |f| %>
             <a class="tilter tilter-lines game-card" id="card_<%= card.id %>">
               <figure class="tilter__figure">
                 <%= image_tag card.picture.url, class: "tilter__image" %>
