@@ -3,11 +3,11 @@
   <head>
     <title>Samurai Jack Voting Game</title>
 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <%= csrf_meta_tags %>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Abril+Fatface" rel="stylesheet">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -21,7 +21,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to 'Samuria Jack Voting Game', root_path, class: "navbar-brand" %>
+          <a class="navbar-brand">Samuria Jack Voting Game</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -34,7 +34,25 @@
       </div>
     </nav>
 
-    <%= yield %>
+    <main class="cd-image-mask-effect" id="portal-main">
+      <section class="page-selected cd-project-mask">
+        <div class="mask">
+          <%= image_tag 'portal.png', class: 'portal-img'%>
+          <span class="mask-border mask-border-top"></span>
+          <span class="mask-border mask-border-bottom"></span>
+          <span class="mask-border mask-border-left"></span>
+          <span class="mask-border mask-border-right"></span>
+        </div>
+        <div class="cd-project-info">
+          <div class="content-wrapper">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="primary-content"> 
+      <%= yield %>
+    </div>
     
   </body>
 

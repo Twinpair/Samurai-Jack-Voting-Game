@@ -1,4 +1,12 @@
-$("#card_container").animate({left: '0px'});
+$(".primary-content").hide();
+setTimeout(
+  function() 
+  {
+    $("#portal-main").remove();
+    $(".primary-content").show();
+    $("#card_container").animate({left: '0px'});
+  }, 800);
+
 
 $(document).on("click", ".card_form", function() {
    $(this).submit();
