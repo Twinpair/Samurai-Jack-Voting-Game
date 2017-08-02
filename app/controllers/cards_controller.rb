@@ -1,5 +1,7 @@
 class CardsController < ApplicationController
-  
+
+  before_filter :authenticate, only: [:new, :create, :edit, :update, :destroy]
+
   def enemies
     @cards = Card.retrieve_cards("Enemy")
     @total_votes = Card.total_votes("Enemy")
@@ -56,7 +58,6 @@ class CardsController < ApplicationController
   end
 
   def create
-    
     @card = Card.new(name: params[:card][:name], description: params[:card][:description], category: Category.find(params[:category_id]), picture: params[:card][:picture])
     if @card.save
       redirect_to root_path
@@ -90,6 +91,14 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     @card.destroy
     redirect_to root_path
+  end
+
+protected
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["ADMIN"] && password == ENV["PASSWORD"]
+    end
   end
 
 end

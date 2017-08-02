@@ -25,3 +25,6 @@
 
 # Ignore DS_store
 .DS_Store
+
+#Ignore development enviromental variables
+/config/local_env.yml
