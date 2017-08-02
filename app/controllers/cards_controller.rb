@@ -5,6 +5,7 @@ class CardsController < ApplicationController
   def enemies
     @cards = Card.retrieve_cards("Enemy")
     @total_votes = Card.total_votes("Enemy")
+    @title = "Vote Enemies"
     @tilter_feature = true
     @fixed_nav = false
     @background = "enemies-background.png"
@@ -13,6 +14,7 @@ class CardsController < ApplicationController
   def outfits
     @cards = Card.retrieve_cards("Outfit")
     @total_votes = Card.total_votes("Outfit")
+    @title = "Vote Outfits"
     @tilter_feature = true
     @fixed_nav = false
     @background = "outfits-background.png"
@@ -21,6 +23,7 @@ class CardsController < ApplicationController
   def allies
     @cards = Card.retrieve_cards("Ally")
     @total_votes = Card.total_votes("Ally")
+    @title = "Vote Allies"
     @tilter_feature = true
     @fixed_nav = false
     @background = "allies-background.png"
@@ -28,12 +31,14 @@ class CardsController < ApplicationController
 
   def results
     @cards = Card.get_results
+    @title = "Results (All)"
     @tilter_feature = false
     @fixed_nav = true
   end
 
   def results_enemies
     @cards = Card.get_results("Enemy")
+    @title = "Results (Enemies)"
     @tilter_feature = false
     @fixed_nav = true
     @background = "enemies-background.png"
@@ -41,6 +46,7 @@ class CardsController < ApplicationController
 
   def results_outfits
     @cards = Card.get_results("Outfit")
+    @title = "Results (Outfits)"
     @tilter_feature = false
     @fixed_nav = true
     @background = "outfits-background.png"
@@ -48,6 +54,7 @@ class CardsController < ApplicationController
 
   def results_allies
     @cards = Card.get_results("Ally")
+    @title = "Results (Allies)"
     @tilter_feature = false
     @fixed_nav = true
     @background = "allies-background.png"

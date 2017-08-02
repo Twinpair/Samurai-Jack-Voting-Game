@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Samurai Jack Voting Game</title>
+    <title><%= @title.nil? ? "Samurai Jack Voting Game" : "#{@title} | Samurai Jack Voting Game" %></title>
+
+    <%= favicon_link_tag 'favicon.ico' %>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="android-icon.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
