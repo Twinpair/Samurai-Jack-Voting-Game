@@ -5,25 +5,9 @@
             <h1 class="title">Results (Enemies)</h1>
             <p class="text-center resutls-filter">Filter:&nbsp;&nbsp;<%= link_to 'All', results_path %> | <%= link_to 'Outfits', results_outfits_path %> | <%= link_to 'Allies', results_allies_path %></p>
           </div>
-              
-        <% @cards.each do |card| %>
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-            <a  class="tilter" id="card_<%= card.id %>" style="margin: 0.8em auto">
-              <figure class="tilter__figure">
-                <%= image_tag card.picture.url, class: "tilter__image" %>
-                <div class="tilter__deco tilter__deco--shine"></div>
-                <figcaption class="tilter__caption-title">
-                  <h3 class="tilter__title card-text"><%= card.name %></h3>
-                </figcaption>
-                <figcaption class="tilter__caption">
-                  <p class="tilter__description card-text"><%= card.description %></p>
-                  <p class="tilter__votes card-text">Total Votes: <%= card.votes %></p>
-                </figcaption>
-              </figure>
-            </a>
-          </div>
-        <% end%>
 
+          <%= render partial: "display_results", collection: @cards, as: :card %>
+          
         </div>
       </div>  
     </section>  

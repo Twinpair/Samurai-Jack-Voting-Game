@@ -1,5 +1,5 @@
-<%= form_for(card, method: :put, html: {id:"card_submit_#{card.id}", class: "card_form remove_form"}, remote: true ) do |f| %>
-            <a class="tilter tilter-lines game-card" id="card_<%= card.id %>">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a  class="tilter" id="card_<%= card.id %>" style="margin: 0.8em auto">
               <figure class="tilter__figure">
                 <%= image_tag card.picture.url, class: "tilter__image" %>
                 <div class="tilter__deco tilter__deco--shine"></div>
@@ -10,10 +10,6 @@
                   <p class="tilter__description card-text"><%= card.description %></p>
                   <p class="tilter__votes card-text">Total Votes: <%= card.votes %></p>
                 </figcaption>
-                <svg class="tilter__deco tilter__deco--lines" viewBox="0 0 300 415">
-                  <path d="M20.5,20.5h260v375h-260V20.5z" />
-                </svg>
               </figure>
             </a>
-          <% end %>
-
+          </div>
