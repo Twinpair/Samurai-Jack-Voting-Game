@@ -92,6 +92,13 @@
 	stroke-width: 1.5px;
 }
 
+.tilter__caption-title {
+	position: absolute;
+	bottom: 5em;
+	width: 100%;
+	padding: 4em 2em;
+}
+
 .tilter__caption {
 	position: absolute;
 	bottom: 0;
