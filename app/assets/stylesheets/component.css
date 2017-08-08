@@ -103,7 +103,11 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	padding: 4em;
+	padding: 4em 3em;
+}
+
+.display_results{
+	margin: 0.8em auto
 }
 
 /* Card Text */
@@ -112,7 +116,8 @@
 }
 
 .game-card{
-  cursor: pointer; cursor: hand;
+  cursor: pointer; 
+  cursor: hand;
 }
 
 .tilter__title {
