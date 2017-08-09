@@ -1,6 +1,10 @@
 class Card < ApplicationRecord
 
   belongs_to :category
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true
+  validates :category, presence: true
+  validates :picture, presence: true
 
   mount_uploader :picture, PictureUploader
 
