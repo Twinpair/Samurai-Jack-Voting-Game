@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 
-  before_filter :authenticate, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :authenticate, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def enemies
     @cards = Card.retrieve_cards("Enemy")
@@ -60,6 +60,11 @@ class CardsController < ApplicationController
     @background = "allies-background.png"
   end
 
+  def index
+    @cards = Card.get_cards_for_index
+    @fixed_nav = true
+  end
+
   def new
     @card = Card.new
   end
@@ -68,7 +73,7 @@ class CardsController < ApplicationController
     @card = Card.new(name: params[:card][:name], description: params[:card][:description], picture: params[:card][:picture])
     params[:category_id].empty? ? @card.category = nil : @card.category = Category.find(params[:category_id])
     if @card.save
-      redirect_to root_path
+      redirect_to cards_path
     else
       render :new
     end
@@ -85,7 +90,7 @@ class CardsController < ApplicationController
         @card.picture = params[:card][:picture] if !params[:card][:picture].nil?
         params[:category_id].empty? ? @card.category = nil : @card.category = Category.find(params[:category_id])
         if @card.update(name: params[:card][:name], description:params[:card][:description])
-          format.html { redirect_to root_path }
+          format.html { redirect_to cards_path }
         else
           format.html { render :edit }
         end
@@ -103,7 +108,7 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-    redirect_to root_path
+    redirect_to cards_path
   end
 
 protected

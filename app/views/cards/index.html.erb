@@ -1,0 +1,32 @@
+<section class="content" id="results">
+      <div class="container">
+        <div class="row">
+          <div class="button-div">
+            <%= link_to "New Card", new_path, class: "btn btn-primary form-button" %>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1 class="title">All Cards</h1>
+          </div>
+        <% @cards.each do |card| %>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a  class="tilter display_results" id="card_<%= card.id %>" href="/<%= card.id %>/edit">
+              <figure class="tilter__figure">
+                <%= image_tag card.picture.url, class: "tilter__image" %>
+                <div class="tilter__deco tilter__deco--shine"></div>
+                <figcaption class="tilter__caption-title">
+                  <h3 class="tilter__title card-text"><%= card.name %></h3>
+                </figcaption>
+                <figcaption class="tilter__caption">
+                  <p class="tilter__description card-text"><%= card.description %></p>
+                  <p class="tilter__votes card-text">Total Votes: <%= card.votes %></p>
+                </figcaption>
+              </figure>
+            </a>
+            <div class="button-div-index">
+              <%= button_to "Delete Card", card, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger form-button" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>  
+    </section>  
