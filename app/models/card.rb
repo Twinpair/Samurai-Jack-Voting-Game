@@ -53,7 +53,7 @@ class Card < ApplicationRecord
 
   # Orders the cards by the 'updated_at' attribute for editing purposes
   def self.get_cards_for_index
-    Card.order(updated_at: :desc)
+    Card.order(created_at: :asc)
   end
 
 end
