@@ -1,8 +1,7 @@
 <section class="content" id="results">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1 class="title">Results (Allies)</h1>
+          <%= render partial: "results_title", locals: {title: @title, total_cards: @total_cards , total_votes: @total_votes} %>
             <p class="text-center resutls-filter">Filter:&nbsp;&nbsp;<%= link_to 'All', results_path %> | <%= link_to 'Enemies', results_enemies_path %> | <%= link_to 'Outfits', results_outfits_path %></p>
           </div>
 

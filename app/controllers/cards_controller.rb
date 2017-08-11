@@ -31,13 +31,17 @@ class CardsController < ApplicationController
 
   def results
     @cards = Card.get_results
-    @title = "Results (All)"
+    @total_cards = Card.total_cards
+    @total_votes = Card.total_votes
+    @title = "Results"
     @tilter_feature = false
     @fixed_nav = true
   end
 
   def results_enemies
     @cards = Card.get_results("Enemy")
+    @total_cards = Card.total_cards("Enemy")
+    @total_votes = Card.total_votes("Enemy")
     @title = "Results (Enemies)"
     @tilter_feature = false
     @fixed_nav = true
@@ -46,6 +50,8 @@ class CardsController < ApplicationController
 
   def results_outfits
     @cards = Card.get_results("Outfit")
+    @total_cards = Card.total_cards("Outfit")
+    @total_votes = Card.total_votes("Outfit")
     @title = "Results (Outfits)"
     @tilter_feature = false
     @fixed_nav = true
@@ -54,6 +60,8 @@ class CardsController < ApplicationController
 
   def results_allies
     @cards = Card.get_results("Ally")
+    @total_cards = Card.total_cards("Ally")
+    @total_votes = Card.total_votes("Ally")
     @title = "Results (Allies)"
     @tilter_feature = false
     @fixed_nav = true

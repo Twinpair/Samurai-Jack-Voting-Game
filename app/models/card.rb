@@ -21,9 +21,14 @@ class Card < ApplicationRecord
     return cards_to_return
   end
 
-  # Adds and returns all votes that have been made on the site (depending on category)
-  def self.total_votes(category)
-    return Card.where(category: Category.find_by(name: category)).sum(:votes)
+  # Returns the total votes that have been made on the cards (depending on category)
+  def self.total_votes(category="all")
+    return category == "all" ? Card.all.sum(:votes) : Card.where(category: Category.find_by(name: category)).sum(:votes)
+  end
+
+  # Returns the total card count (depending on category)
+  def self.total_cards(category="all")
+    return category == "all" ? Card.all.count : Card.where(category: Category.find_by(name: category)).count
   end
 
   # Clears the used_cards array, so the game can use all cards again
