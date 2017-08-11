@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 
-  before_filter :authenticate, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_filter :authenticate, only: [:index, :new, :create, :edit, :destroy]
 
   def enemies
     @cards = Card.retrieve_cards("Enemy")
