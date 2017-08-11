@@ -103,8 +103,7 @@ class CardsController < ApplicationController
           format.html { render :edit }
         end
       else
-        @card.update_vote_count
-        @card.save
+        Card.update_vote_count(@card)
         @cards = Card.retrieve_cards(@card.category.name)
         @total_votes = Card.total_votes(@card.category.name)
         format.html { redirect_to root_path }

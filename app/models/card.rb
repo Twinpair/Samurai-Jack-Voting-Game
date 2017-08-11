@@ -8,16 +8,18 @@ class Card < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
 
-  # Will keep track of what cards were already voted on
+  # Variables to keep track of what cards were used and unused
   @used_cards = []
+  @unused_cards = []
+  @save_category = nil
 
   # Returns the two cards that will be voted on (depending on category)
   def self.retrieve_cards(category)
     cards_to_return = []
-    unused_cards = Card.where(category: Category.find_by(name: category)).where.not(id: @used_cards).shuffle
-    cards_to_return.push(unused_cards.first, unused_cards.second)
-    @used_cards.push(unused_cards.shift, unused_cards.shift)
-    self.reset_used_cards if unused_cards.length <= 1
+    self.reset_used_cards if category != @save_category
+    @save_category = category
+    @unused_cards = Card.where(category: Category.find_by(name: category)).where.not(id: @used_cards).shuffle
+    cards_to_return.push(@unused_cards.first, @unused_cards.second)
     return cards_to_return
   end
 
@@ -36,9 +38,12 @@ class Card < ApplicationRecord
     @used_cards = []
   end
 
-  # Increments the 'votes' attribute by 1 for the item that was voted on
-  def update_vote_count
-    self.votes += 1
+  # Increments the 'votes' attribute by 1 for the item that was voted on. Adds the cards that were voted on to the used_cards array
+  def self.update_vote_count(card)
+    card.votes += 1
+    card.save
+    @used_cards.push(@unused_cards.shift, @unused_cards.shift)
+    self.reset_used_cards if @unused_cards.length <= 1
   end
 
   # Orders the cards by the 'votes' attribute for results purposes
