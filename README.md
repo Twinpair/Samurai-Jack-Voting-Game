@@ -1,24 +1,18 @@
-# README
+# Samuria Jack Voting Game
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Vote on who is your favorite Samurai Jack's Enemy, Ally, or Outfit! 
+Check it out here: https://samurai-jack-voting-game.herokuapp.com
 
-Things you may want to cover:
+DISCLAIMER: I do not own any of these images. They are the property of Adult Swim and the creators of the Samurai Jack TV Series. I only intend to use them for fair use and not profit off them.
 
-* Ruby version
+Version and Deployment instructions:
 
-* System dependencies
+* Ruby version - 2.4.0rc1
 
-* Configuration
+* Rails version - 5.0.4
 
-* Database creation
+* Database - Postgres
 
-* Database initialization
+* Framework - Ruby on Rails
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Hosted on Heroku
