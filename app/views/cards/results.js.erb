@@ -1,0 +1,7 @@
+$('#results_div').append('<%= j render partial: "display_results", collection: @cards, as: :card %>');
+<% if @cards.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @cards %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

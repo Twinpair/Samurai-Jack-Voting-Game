@@ -4,9 +4,12 @@
           <%= render partial: "results_title", locals: {title: @title, total_cards: @total_cards , total_votes: @total_votes} %>
             <p class="text-center resutls-filter">Filter:&nbsp;&nbsp;<%= link_to 'All', results_path %> | <%= link_to 'Enemies', results_enemies_path %> | <%= link_to 'Outfits', results_outfits_path %></p>
           </div>
-
-          <%= render partial: "display_results", collection: @cards, as: :card %>
-          
+          <div id="results_div">
+            <%= render partial: "display_results", collection: @cards, as: :card %>
+          </div>
+          <div id="infinite-scrolling">
+            <%= will_paginate @cards %>
+          </div>
         </div>
       </div>  
     </section>  
