@@ -11,7 +11,7 @@
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
             <a  class="tilter display_results" id="card_<%= card.id %>" href="/<%= card.id %>/edit">
               <figure class="tilter__figure">
-                <%= image_tag card.picture.url, class: "tilter__image" %>
+                <%= image_tag card.image, class: "tilter__image" %>
                 <div class="tilter__deco tilter__deco--shine"></div>
                 <figcaption class="tilter__caption-title">
                   <h3 class="tilter__title card-text"><%= card.name %></h3>
