@@ -4,9 +4,7 @@ class Card < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :category, presence: true
-  validates :picture, presence: true
-
-  mount_uploader :picture, PictureUploader
+  validates :image, presence: true
 
   # Variables to keep track of what cards were used and unused
   @used_cards = []

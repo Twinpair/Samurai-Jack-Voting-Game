@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814000227) do
+ActiveRecord::Schema.define(version: 20170814014945) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20170814000227) do
     t.integer  "votes",       default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.string   "picture"
     t.integer  "category_id"
     t.string   "image"
     t.index ["category_id"], name: "index_cards_on_category_id"

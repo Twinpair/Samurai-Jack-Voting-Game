@@ -78,7 +78,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(name: params[:card][:name], description: params[:card][:description], picture: params[:card][:picture], image: params[:card][:image])
+    @card = Card.new(name: params[:card][:name], description: params[:card][:description], image: params[:card][:image])
     params[:category_id].empty? ? @card.category = nil : @card.category = Category.find(params[:category_id])
     if @card.save
       redirect_to cards_path
@@ -95,7 +95,6 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id]) 
     respond_to do |format|
       if !params[:card].nil?
-        @card.picture = params[:card][:picture] if !params[:card][:picture].nil?
         params[:category_id].empty? ? @card.category = nil : @card.category = Category.find(params[:category_id])
         if @card.update(name: params[:card][:name], description:params[:card][:description], image: params[:card][:image])
           format.html { redirect_to cards_path }
