@@ -46,7 +46,7 @@ class Card < ApplicationRecord
 
   # Orders the cards by the 'votes' attribute for results purposes
   def self.get_results(category="all")
-    return category == "all" ? Card.order(votes: :desc) : Card.where(category: Category.find_by(name:category)).order(votes: :desc)
+    return category == "all" ? Card.order(votes: :desc, id: :asc) : Card.where(category: Category.find_by(name:category)).order(votes: :desc, id: :asc)
   end
 
   # Orders the cards by the 'updated_at' attribute for editing purposes
