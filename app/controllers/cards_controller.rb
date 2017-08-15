@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 
-  before_filter :authenticate, only: [:index, :new, :create, :edit, :destroy]
+  before_action :authenticate, only: [:index, :new, :create, :edit, :destroy]
 
   def index
     @cards = Card.get_cards_for_index
