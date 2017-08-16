@@ -3,13 +3,11 @@ class CardsController < ApplicationController
   before_action :authenticate, only: [:index, :new, :create, :edit, :destroy]
 
   def index
-    set_current_game nil
     @cards = Card.get_cards_for_index
     @fixed_nav = true
   end
 
   def new
-    set_current_game nil
     @card = Card.new
   end
 
@@ -24,7 +22,6 @@ class CardsController < ApplicationController
   end
 
   def edit
-    set_current_game nil
     @card = Card.find(params[:id])
   end
 
