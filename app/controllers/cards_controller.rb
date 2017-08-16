@@ -3,11 +3,13 @@ class CardsController < ApplicationController
   before_action :authenticate, only: [:index, :new, :create, :edit, :destroy]
 
   def index
+    set_current_game nil
     @cards = Card.get_cards_for_index
     @fixed_nav = true
   end
 
   def new
+    set_current_game nil
     @card = Card.new
   end
 
@@ -22,6 +24,7 @@ class CardsController < ApplicationController
   end
 
   def edit
+    set_current_game nil
     @card = Card.find(params[:id])
   end
 
@@ -36,8 +39,10 @@ class CardsController < ApplicationController
           format.html { render :edit }
         end
       else
-        Card.update_vote_count(@card)
-        @cards = Card.retrieve_cards(@card.category.name)
+        current_game.update_vote_count(@card)
+        update_current_game
+        @cards = current_game.retrieve_cards(@card.category.name)
+        update_current_game
         @total_votes = Card.total_votes(@card.category.name)
         format.html { redirect_to root_path }
         format.js
@@ -52,7 +57,10 @@ class CardsController < ApplicationController
   end
 
   def enemies
-    @cards = Card.retrieve_cards("Enemy")
+    set_current_game nil
+    set_current_game Game.new
+    @cards = current_game.retrieve_cards("Enemy")
+    update_current_game
     @total_votes = Card.total_votes("Enemy")
     @title = "Vote Enemies"
     @tilter_feature = true
@@ -61,7 +69,10 @@ class CardsController < ApplicationController
   end
 
   def outfits
-    @cards = Card.retrieve_cards("Outfit")
+    set_current_game nil
+    set_current_game Game.new
+    @cards = current_game.retrieve_cards("Outfit")
+    update_current_game
     @total_votes = Card.total_votes("Outfit")
     @title = "Vote Outfits"
     @tilter_feature = true
@@ -70,7 +81,10 @@ class CardsController < ApplicationController
   end
 
   def allies
-    @cards = Card.retrieve_cards("Ally")
+    set_current_game nil
+    set_current_game Game.new
+    @cards = current_game.retrieve_cards("Ally")
+    update_current_game
     @total_votes = Card.total_votes("Ally")
     @title = "Vote Allies"
     @tilter_feature = true
