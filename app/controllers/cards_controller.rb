@@ -58,23 +58,11 @@ class CardsController < ApplicationController
     set_current_game Game.new
     @cards = current_game.retrieve_cards("Enemy")
     update_current_game
+    @background =  browser.device.mobile? ? "enemies-background-mobile.jpg" : "enemies-background.png"
+    @fixed_nav = false
+    @tilter_feature = true
     @total_votes = Card.total_votes("Enemy")
     @title = "Vote Enemies"
-    @tilter_feature = true
-    @fixed_nav = false
-    @background = "enemies-background.png"
-  end
-
-  def outfits
-    set_current_game nil
-    set_current_game Game.new
-    @cards = current_game.retrieve_cards("Outfit")
-    update_current_game
-    @total_votes = Card.total_votes("Outfit")
-    @title = "Vote Outfits"
-    @tilter_feature = true
-    @fixed_nav = false
-    @background = "outfits-background.png"
   end
 
   def allies
@@ -82,11 +70,23 @@ class CardsController < ApplicationController
     set_current_game Game.new
     @cards = current_game.retrieve_cards("Ally")
     update_current_game
+    @background =  browser.device.mobile? ? "allies-background-mobile.jpg" : "allies-background.png"   
+    @fixed_nav = false
+    @tilter_feature = true
     @total_votes = Card.total_votes("Ally")
     @title = "Vote Allies"
-    @tilter_feature = true
+  end
+
+  def outfits
+    set_current_game nil
+    set_current_game Game.new
+    @cards = current_game.retrieve_cards("Outfit")
+    update_current_game
+    @background =  browser.device.mobile? ? "outfits-background-mobile.jpg" : "outfits-background.png"   
     @fixed_nav = false
-    @background = "allies-background.png"
+    @tilter_feature = true
+    @total_votes = Card.total_votes("Outfit")
+    @title = "Vote Outfits"
   end
 
   def results
@@ -95,11 +95,12 @@ class CardsController < ApplicationController
       format.html
       format.js { render 'results.js' }
     end
+    @background =  browser.device.mobile? ? "background-mobile.jpg" : "background.png"
+    @fixed_nav = true
+    @tilter_feature = false
     @total_cards = Card.total_cards
     @total_votes = Card.total_votes
     @title = "Results"
-    @tilter_feature = false
-    @fixed_nav = true
   end
 
   def results_enemies
@@ -108,26 +109,12 @@ class CardsController < ApplicationController
       format.html
       format.js { render 'results.js' }
     end
+    browser.device.mobile? ? @background = "enemies-background-mobile.jpg" : @background = "enemies-background.png"
+    @fixed_nav = true
+    @tilter_feature = false
     @total_cards = Card.total_cards("Enemy")
     @total_votes = Card.total_votes("Enemy")
     @title = "Results (Enemies)"
-    @tilter_feature = false
-    @fixed_nav = true
-    @background = "enemies-background.png"
-  end
-
-  def results_outfits
-    @cards = Card.get_results("Outfit").paginate(page: params[:page], per_page: 6)
-    respond_to do |format|
-      format.html
-      format.js { render 'results.js' }
-    end
-    @total_cards = Card.total_cards("Outfit")
-    @total_votes = Card.total_votes("Outfit")
-    @title = "Results (Outfits)"
-    @tilter_feature = false
-    @fixed_nav = true
-    @background = "outfits-background.png"
   end
 
   def results_allies
@@ -136,12 +123,26 @@ class CardsController < ApplicationController
       format.html
       format.js { render 'results.js' }
     end
+    @background =  browser.device.mobile? ? "allies-background-mobile.jpg" : "allies-background.png"
+    @fixed_nav = true
+    @tilter_feature = false
     @total_cards = Card.total_cards("Ally")
     @total_votes = Card.total_votes("Ally")
     @title = "Results (Allies)"
-    @tilter_feature = false
+  end
+
+  def results_outfits
+    @cards = Card.get_results("Outfit").paginate(page: params[:page], per_page: 6)
+    respond_to do |format|
+      format.html
+      format.js { render 'results.js' }
+    end
+    @background =  browser.device.mobile? ? "outfits-background-mobile.jpg" : "outfits-background.png"   
     @fixed_nav = true
-    @background = "allies-background.png"
+    @tilter_feature = false
+    @total_cards = Card.total_cards("Outfit")
+    @total_votes = Card.total_votes("Outfit")
+    @title = "Results (Outfits)"
   end
 
 protected

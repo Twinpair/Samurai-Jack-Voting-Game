@@ -74,10 +74,19 @@
 /* Body */
 body {
   font-family: 'Roboto','Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
-  background-repeat: no-repeat;
-  background-position: center 0%;
-  background-size: cover;
-  background-attachment: fixed;
+}
+@media screen and (min-width:500px) {
+  body {
+    background-repeat: no-repeat;
+    background-position: center 0%;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
+@media screen and (max-width: 480px) {
+  body {
+    background-position: center 0%;
+  }
 }
 .primary-content{
   overflow: hidden;

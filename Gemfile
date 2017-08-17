@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'newrelic_rpm'
 # Paginate
 gem 'will_paginate'
+# Browser (Detect platforms)
+gem "browser"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
