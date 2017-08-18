@@ -1,6 +1,6 @@
 $('#card_container').animate({left: '1100px'}, function(){
 	$("#total_votes").text("Total Votes: <%= @total_votes %>");
-	$('.remove_form').remove();
+	$('form').remove();
 	$("#card_container").attr("style", "left='-600px;'");
 	$("#card_container").prepend("<%= j render @cards %>");
 	$("#card_container").animate({left: '0px'});

@@ -3,7 +3,6 @@
 	position: relative;
 	width: 300px;
 	height: 415px;
-	margin: .8em 5em;
 	color: #fff;
 	flex: none;
 	perspective: 1000px;
@@ -113,11 +112,6 @@
 /* Card Text */
 .card-text{
   background-image: linear-gradient(45deg, rgba(85, 85, 85, 0.5) 0%, rgba(119, 119, 119, 0.61) 50%, rgba(119, 119, 119, 0.3) 100%);
-}
-
-.game-card{
-  cursor: pointer; 
-  cursor: hand;
 }
 
 .tilter__title {
