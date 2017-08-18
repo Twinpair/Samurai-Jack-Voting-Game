@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body style="background-image: url(<%= @background.nil? ? asset_path("background.png") : asset_path(@background)%> );">
+  <body ontouchstart="" style="background-image: url(<%= @background.nil? ? asset_path("background.png") : asset_path(@background)%> );">
     <nav class="navbar navbar-default <%= 'navbar-fixed-top' if @fixed_nav %>">
       <div class="container">
         <div class="navbar-header">

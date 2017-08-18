@@ -2,7 +2,7 @@
       <div class="container">
         <div class="row">
           <%= render partial: "results_title", locals: {title: @title, total_cards: @total_cards , total_votes: @total_votes} %>
-            <p class="text-center resutls-filter">Filter:&nbsp;&nbsp;<%= link_to 'All', results_path %> | <%= link_to 'Allies', results_allies_path %> | <%= link_to 'Outfits', results_outfits_path %></p>
+            <p class="text-center resutls_filter">Filter:&nbsp;&nbsp;<%= link_to 'All', results_path %> | <%= link_to 'Allies', results_allies_path %> | <%= link_to 'Outfits', results_outfits_path %></p>
           </div>
           <div id="results_div">
             <%= render partial: "display_results", collection: @cards, as: :card %>
