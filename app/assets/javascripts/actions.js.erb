@@ -1,10 +1,10 @@
 $(".primary-content").hide();
 setTimeout(
-  function() 
-  {
+  function(){
     $("#portal-main").remove();
     $(".primary-content").show();
-    $("#card_container").animate({left: '0px'});
+    $(".left_card").animate({left: '0px'});
+    $(".right_card").animate({left: '0px'});
   }, 800);
 
 

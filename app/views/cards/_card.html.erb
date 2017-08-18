@@ -1,5 +1,5 @@
 <%= form_for(card, method: :put, html: {class: "game_card game_card_styling", id: "card_form_#{card.id}"}, remote: true) do %>
-            <a class="tilter tilter-lines" id="card_<%= card.id %>">
+            <a class="tilter tilter-lines <%= @position.shift %>" id="card_<%= card.id %>">
               <figure class="tilter__figure">
                 <%= image_tag card.image, class: "tilter__image" %>
                 <div class="tilter__deco tilter__deco--shine"></div>

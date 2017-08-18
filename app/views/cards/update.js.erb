@@ -1,10 +1,12 @@
-$('#card_container').animate({left: '1100px'}, function(){
-	$("#total_votes").text("Total Votes: <%= @total_votes %>");
+$("#total_votes").text("Total Votes: <%= @total_votes %>");
+$('.left_card').animate({left: '-720px'});
+$('.right_card').animate({left: '720px'}, function(){
 	$('form').remove();
-	$("#card_container").attr("style", "left='-600px;'");
+	<% @position = ["left_card", "right_card"] %>
 	$("#card_container").prepend("<%= j render @cards %>");
-	$("#card_container").animate({left: '0px'});
-	var tiltSettings = [];
+  $(".left_card").animate({left: '0px'});
+  $(".right_card").animate({left: '0px'});
+  var tiltSettings = [];
     function init() {
       var idx = 0;  [].slice.call(document.querySelectorAll('a.tilter')).forEach(function(el, pos) { 
         idx = pos%2 === 0 ? idx+1 : idx;

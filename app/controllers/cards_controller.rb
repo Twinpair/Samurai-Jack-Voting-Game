@@ -58,7 +58,8 @@ class CardsController < ApplicationController
     set_current_game Game.new
     @cards = current_game.retrieve_cards("Enemy")
     update_current_game
-    @background =  browser.device.mobile? ? "enemies-background-mobile.jpg" : "enemies-background.png"
+    @background =  browser.device.mobile? ? "enemies-background-mobile.jpg" : "enemies-background.png" 
+    @position = ["left_card", "right_card"]
     @fixed_nav = false
     @tilter_feature = true
     @total_votes = Card.total_votes("Enemy")
@@ -71,6 +72,7 @@ class CardsController < ApplicationController
     @cards = current_game.retrieve_cards("Ally")
     update_current_game
     @background =  browser.device.mobile? ? "allies-background-mobile.jpg" : "allies-background.png"   
+    @position = ["left_card", "right_card"]
     @fixed_nav = false
     @tilter_feature = true
     @total_votes = Card.total_votes("Ally")
@@ -83,6 +85,7 @@ class CardsController < ApplicationController
     @cards = current_game.retrieve_cards("Outfit")
     update_current_game
     @background =  browser.device.mobile? ? "outfits-background-mobile.jpg" : "outfits-background.png"   
+    @position = ["left_card", "right_card"]
     @fixed_nav = false
     @tilter_feature = true
     @total_votes = Card.total_votes("Outfit")
