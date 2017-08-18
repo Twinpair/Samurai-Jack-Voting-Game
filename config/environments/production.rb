@@ -31,6 +31,9 @@ Rails.application.configure do
     'Expires' => "#{1.year.from_now.to_formatted_s(:rfc822)}"
   }
 
+  # Enable gzipped assets generation
+  config.assets.gzip = true
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
