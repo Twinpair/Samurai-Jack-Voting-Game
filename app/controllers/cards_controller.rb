@@ -38,9 +38,11 @@ class CardsController < ApplicationController
       else
         current_game.update_vote_count(@card)
         update_current_game
-        @cards = current_game.retrieve_cards(@card.category.name)
-        update_current_game
         @total_votes = Card.total_votes(@card.category.name)
+        if !current_game.game_over?
+          @cards = current_game.retrieve_cards(@card.category.name)
+          update_current_game
+        end
         format.html { redirect_to root_path }
         format.js
       end

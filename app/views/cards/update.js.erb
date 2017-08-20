@@ -1,11 +1,12 @@
 $("#total_votes").text("Total Votes: <%= @total_votes %>");
-$('.left_card').animate({left: '-720px'});
-$('.right_card').animate({left: '720px'}, function(){
-	$('form').remove();
+$(".left_card").animate({left: "-720px"});
+$(".right_card").animate({left: "720px"}, function(){
+<% if !current_game.game_over? %>
+  $("form").remove();
 	<% @position = ["left_card", "right_card"] %>
 	$("#card_container").prepend("<%= j render @cards %>");
-  $(".left_card").animate({left: '0px'});
-  $(".right_card").animate({left: '0px'});
+  $(".left_card").animate({left: "0px"});
+  $(".right_card").animate({left: "0px"});
   var tiltSettings = [];
     function init() {
       var idx = 0;  [].slice.call(document.querySelectorAll('a.tilter')).forEach(function(el, pos) { 
@@ -14,4 +15,22 @@ $('.right_card').animate({left: '720px'}, function(){
       });
     }
     init();
+<% else %>
+  $("#card_container").remove();
+  <% if Card.find(params[:id]).category.name == "Enemy" %>
+    <% @category = "Enemies" %>
+    <% @href = "/" %>
+    <% @game_over_buttons = {Allies: ["/allies", true], Outfits: ["/outfits", false]} %>
+  <% elsif Card.find(params[:id]).category.name == "Ally" %>
+    <% @category = "Allies" %>
+    <% @href = "/allies" %>
+    <% @game_over_buttons = {Enemies: ["/", true], Outfits: ["/outfits", false]} %>
+  <% elsif Card.find(params[:id]).category.name == "Outfit" %>
+    <% @category = "Outfits" %>
+    <% @href = "/outfits" %>
+    <% @game_over_buttons = {Enemies: ["/", true], Allies: ["/allies", false]} %>
+  <% end %>
+  $("main").prepend("<%= j render 'game_over' %>");
+  $("#game_over_section").animate({left: "0px"});
+<% end %>
 });

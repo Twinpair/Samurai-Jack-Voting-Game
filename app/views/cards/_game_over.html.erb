@@ -1,0 +1,39 @@
+<section class="content" id="game_over_section">
+        <div class="container">
+          <div class="row game_over_row" >
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 game_over_padding">
+              <h1 class="title">Game Over</h1>
+            </div>
+          </div>
+          <div class="row game_over_row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 game_over_padding">
+              <a href="<%= @href %>" class="btn">Start Over<p class="sub_title">(Reshuffle Cards)</p></a>
+            </div>
+          </div>
+          <div class="row game_over_row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 game_over_padding">
+              <h1 class="title shrink_title">Vote on other categories:</h1>
+            </div>
+          </div>
+          <div class="row game_over_row">
+            <% @game_over_buttons.each do |category, path| %>
+            <div class="col-lg-3 <%='col-lg-offset-3' if path[1]%> col-md-3 <%='col-md-offset-3' if path[1]%> col-sm-12 col-xs-12 game_over_padding <%='game_over_button' if path[1]%>">
+              <%= link_to "Vote on #{category}", path[0], class: "btn" %>
+            </div>
+          <% end %>
+          </div>
+          <div class="row game_over_row" >
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 game_over_padding">
+              <h1 class="title shrink_title">Check out the results:</h1>
+            </div>
+          </div>
+          <div class="row game_over_row">
+            <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 col-sm-12 col-xs-12 game_over_padding game_over_button">
+              <a href="/results" class="btn">Results (All)<p class="sub_title">(All categories combined)</p></a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 game_over_padding">
+              <a href="/results/<%= @category.downcase %>" class="btn">Results (<%= @category %>)<p class="sub_title">(For this category)</p></a>
+            </div>
+          </div>
+        </div>
+      </section>

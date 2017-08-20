@@ -31,13 +31,10 @@ class Game
   def update_vote_count(card)
     card.increment!(:votes)
     self.used_cards.push(self.unused_cards.shift, self.unused_cards.shift)
-    reset_cards if self.unused_cards.length <= 1
   end
 
-  # Clears the game's card arrays, so the game can use all cards again
-  def reset_cards
-    self.used_cards = []
-    self.unused_cards = []
+  def game_over?
+    self.unused_cards.length <= 1
   end
 
 end
