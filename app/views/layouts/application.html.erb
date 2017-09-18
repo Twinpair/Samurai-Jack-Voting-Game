@@ -12,31 +12,13 @@
     <%= csrf_meta_tags %>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Abril+Fatface" rel="stylesheet">
+    <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body ontouchstart="" style="background-image: url(<%= @background.nil? ? asset_path("background.png") : asset_path(@background)%> );">
-    <nav class="navbar navbar-default <%= 'navbar-fixed-top' if @fixed_nav %>">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Menu</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Samuria Jack Voting Game</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Enemies', root_path %></li>
-            <li><%= link_to 'Allies', allies_path %></li>
-            <li><%= link_to 'Outfits', outfits_path %></li>
-            <li><%= link_to 'Results', results_path %></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
+    <%= render "shared/navbar" %>
 
     <main class="cd-image-mask-effect" id="portal-main">
       <section class="page-selected cd-project-mask">
@@ -59,6 +41,8 @@
     </div>
     
   </body>
+
+  <%= render "shared/footer" %>
 
   <%= javascript_include_tag 'application' %>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
