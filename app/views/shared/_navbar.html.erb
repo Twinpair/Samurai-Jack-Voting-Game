@@ -11,10 +11,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Enemies', root_path %></li>
-            <li><%= link_to 'Allies', allies_path %></li>
-            <li><%= link_to 'Outfits', outfits_path %></li>
-            <li><%= link_to 'Results', results_path %></li>
+            <li><%= link_to 'Enemies', root_path, class: "#{'current' if @title == 'Vote Enemies'}" %></li>
+            <li><%= link_to 'Allies', allies_path, class: "#{'current' if @title == 'Vote Allies'}" %></li>
+            <li><%= link_to 'Outfits', outfits_path, class: "#{'current' if @title == 'Vote Outfits'}" %></li>
+            <li><%= link_to 'Results', results_path, class: "#{'current' if @title.include?('Results')}" %></li>
           </ul>
         </div>
       </div>
